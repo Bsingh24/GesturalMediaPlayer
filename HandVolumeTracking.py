@@ -143,6 +143,56 @@ while True:
                     tempx4 = 0
                     tempx5 = 0
 
+        #skip videos (at least on youtube). Next is shift + n, and last is shift + p.
+        #hand symbol for this is all fingers down(aside from thumb). Then drag hand left to go back, and right to skip video. right now it is using short cuts...
+        #so might need to change it.
+        if(y2 > y1) and (y3 > y1) and (y4 > y1) and (y5 > y1):
+                if (globTF == 0):
+                    tempy1 = y1
+                    tempy2 = y2
+                    tempy3 = y3
+                    tempy4 = y4
+                    tempy5 = y5
+                    tempx1 = x1
+                    tempx2 = x2
+                    tempx3 = x3
+                    tempx4 = x4
+                    tempx5 = x5
+                    globTF = 1
+                if (y2 > y1) and (y3 > y1) and (y4 > y1) and (y5 > y1):
+                #if (y2 < y1) and (y3 < y1) and (y4 < y1):
+                    #if (y5 > y1) and (y5 < y1 + 10):
+                    if(x1 < tempx1 - 100):
+                        pyautogui.keyDown('shift')
+                        pyautogui.press('p')
+                        pyautogui.keyUp('shift')
+                        globTF = 0
+                        tempy1 = 0
+                        tempy2 = 0
+                        tempy3 = 0
+                        tempy4 = 0
+                        tempy5 = 0
+                        tempx1 = 0
+                        tempx2 = 0
+                        tempx3 = 0
+                        tempx4 = 0
+                        tempx5 = 0
+                    if(x1 > tempx1 + 100):
+                        pyautogui.keyDown('shift')
+                        pyautogui.press('n')
+                        pyautogui.keyUp('shift')
+                        globTF = 0
+                        tempy1 = 0
+                        tempy2 = 0
+                        tempy3 = 0
+                        tempy4 = 0
+                        tempy5 = 0
+                        tempx1 = 0
+                        tempx2 = 0
+                        tempx3 = 0
+                        tempx4 = 0
+                        tempx5 = 0
+
 
 
         length = math.hypot(x2-x1,y2-y1)
