@@ -193,6 +193,12 @@ while True:
                         tempx4 = 0
                         tempx5 = 0
 
+        #make a hand wave to skip further into the video?
+        #start with a base model, thumb y < index y < middle y < ring y < pinky y. then maybe use somethign that each y cant be more than the distance between middle x? abs((y3 - lmList[9])) might 15, not 9
+        #if x values are within a certain range [pretty much straight infront a line]. This is done by taking the different of X, and seeing each abs(difference) < tempx - 20, and abs(difference) > tempx + 20
+        #then you take all temp values again, and see if the x value will go a certain amount in either direction (left or right). (optional, hook the palm point, break if not working)
+        #when too far to the left, skip back a few (press left key) and too far to the right, skip forward a few (press right key).
+
 
 
         length = math.hypot(x2-x1,y2-y1)
