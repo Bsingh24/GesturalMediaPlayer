@@ -6,6 +6,9 @@ import HandTrackingModule as htm
 import math
 import pyautogui
 
+import os
+from playsound import playsound
+
 
 from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
@@ -41,8 +44,17 @@ val = 0
 volBar = 400
 
 
-
-
+globTF = 0
+tempy1 = 0
+tempy2 = 0
+tempy3 = 0
+tempy4 = 0
+tempy5 = 0
+tempx1 = 0
+tempx2 = 0
+tempx3 = 0
+tempx4 = 0
+tempx5 = 0
 
 
 while True:
@@ -66,15 +78,67 @@ while True:
 
         print(y1)
         print(y2)
+        #making a full open hand be the reset
+        if (y2 < y1) and (y3 < y1) and (y4 < y1) and (y5 < y1):
+            tempy1 = 0
+            tempy2 = 0
+            tempy3 = 0
+            tempy4 = 0
+            tempy5 = 0
+            tempx1 = 0
+            tempx2 = 0
+            tempx3 = 0
+            tempx4 = 0
+            tempx5 = 0
+            globTF = 0
 
-        if y2 > y1:
+        #these are the lower the level
+        if (y2 > y1) and (y3 < y1) and (y4 < y1) and (y5 < y1): #index finder
             pyautogui.hotkey('volumedown')
-        elif y3 > y1:
+        elif (y3 > y1) and (y2 < y1) and (y4 < y1) and (y5 < y1): #middle finger
             pyautogui.hotkey('volumeup')
-        elif y4 > y1:
+        elif (y4 > y1) and (y2 < y1) and (y3 < y1) and (y5 < y1): #ring finger
             pyautogui.hotkey('stop')
-        elif y5 > y1:
+        elif (y5 > y1) and (y2 < y1) and (y3 < y1) and (y4 < y1): #pinky finger
             pyautogui.hotkey('playpause')
+
+        #something a little more advanced
+        #hold hand like a gun with y2 and y3 in the air, with y4 and y5 pointed down. Then move y1 upwards to hand. to cancel just move hand or release hand.
+        if(y2 < y1) and (y3 < y1) and (y4 > y1) and (y5 > y1):
+            #keeps track where the values are at before hand
+            if (globTF == 0):
+                tempy1 = y1
+                tempy2 = y2
+                tempy3 = y3
+                tempy4 = y4
+                tempy5 = y5
+                tempx1 = x1
+                tempx2 = x2
+                tempx3 = x3
+                tempx4 = x4
+                tempx5 = x5
+                globTF = 1
+            if(y2 < y1) and (y3 < y1) and (y4 > y1) and (y5 > y1) and (x5 < tempx1) and (x1 > tempx5):
+                if(y2 < (tempy2)-15):
+                    print("gun too high!")
+                elif(y3 < (tempy3)-15):
+                    print("gun too high!")
+                elif(y1 < (tempy1)-20):
+                    audio_file = os.path.dirname(__file__) + '/sounds/gunshot.mp3'
+                    playsound(audio_file)
+                    globTF = 0
+                    tempy1 = 0
+                    tempy2 = 0
+                    tempy3 = 0
+                    tempy4 = 0
+                    tempy5 = 0
+                    tempx1 = 0
+                    tempx2 = 0
+                    tempx3 = 0
+                    tempx4 = 0
+                    tempx5 = 0
+
+
 
         length = math.hypot(x2-x1,y2-y1)
         print(length)
@@ -108,3 +172,4 @@ while True:
 
     cv2.imshow("Img", img)
     cv2.waitKey(1)
+    print("tempy is at ", tempy1)
