@@ -4,6 +4,7 @@ import mediapipe
 import time
 import HandTrackingModule as htm
 import math
+import pyautogui
 
 
 from ctypes import cast, POINTER
@@ -36,6 +37,8 @@ volume = cast(interface, POINTER(IAudioEndpointVolume))
 volRange = volume.GetVolumeRange()
 minVol = volRange[0]
 maxVol = volRange[1]
+val = 0
+volBar = 400
 
 
 
@@ -65,10 +68,24 @@ while True:
 
         #hand range 300 to 50
         vol = np.interp(length,[50,300],[minVol,maxVol])
-        volume.SetMasterVolumeLevel(-20.0, None)
+        volBar = np.interp(length,[50,300],[400,150])
+        volume.SetMasterVolumeLevel(vol, None)
 
         if length<50:
             cv2.circle(img, (xc, yc), 15, (0, 255, 0), cv2.FILLED)
+
+    cv2.rectangle(img,(50,150), (85,400), (0,255,0), 3)
+    cv2.rectangle(img,(50,int(volBar)), (85,400), (0,255,0), cv2.FILLED)
+
+    # prevlength = length
+    # while length <= 500 and length >= 0:
+    #     if length > prevlength:
+    #         pyautogui.hotkey('volume up')
+    #     elif length < prevlength:
+    #         pyautogui.hotkey('volume down')
+    #     else:
+    #         pass
+    #     prevlength = length
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
