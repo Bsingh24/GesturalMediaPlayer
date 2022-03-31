@@ -45,6 +45,7 @@ volBar = 400
 
 
 globTF = 0
+playpauseTF = 0
 tempy1 = 0
 tempy2 = 0
 tempy3 = 0
@@ -55,6 +56,7 @@ tempx2 = 0
 tempx3 = 0
 tempx4 = 0
 tempx5 = 0
+
 
 
 while True:
@@ -91,6 +93,7 @@ while True:
             tempx4 = 0
             tempx5 = 0
             globTF = 0
+            playpauseTF = 0
 
         #these are the lower the level
         if (y2 > y1) and (y3 < y1) and (y4 < y1) and (y5 < y1): #index finder
@@ -100,7 +103,9 @@ while True:
         elif (y4 > y1) and (y2 < y1) and (y3 < y1) and (y5 < y1): #ring finger
             pyautogui.hotkey('stop')
         elif (y5 > y1) and (y2 < y1) and (y3 < y1) and (y4 < y1): #pinky finger
-            pyautogui.hotkey('playpause')
+            if(playpauseTF == 0):
+                pyautogui.hotkey('playpause')
+                playpauseTF = 1
 
         #something a little more advanced
         #hold hand like a gun with y2 and y3 in the air, with y4 and y5 pointed down. Then move y1 upwards to hand. to cancel just move hand or release hand.
