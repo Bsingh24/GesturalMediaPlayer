@@ -194,6 +194,56 @@ while True:
         #             tempx5 = 0
 
 
+        #if all tips are on the same x-axis, fast-forward or rewind mode
+        #move flat hand left for rewind, right for fast forward
+        if (index_x <= thumbx + 5 or index_x >= thumbx - 5) and (middle_x <= thumbx + 5 or middle_x >= thumbx - 5) and (ring_x <= thumbx + 5 or ring_x >= thumbx - 5) and (pinky_x <= thumbx + 5 or pinky_x >= thumbx - 5):
+            #cv2.putText(img, "FFW or RWD", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2,(0,0,255), 2)
+            if(globTF == 0):
+                tempy1 = thumby
+                tempy2 = index_y
+                tempy3 = middle_y
+                tempy4 = ring_y
+                tempy5 = pinky_y
+                tempx1 = thumbx
+                tempx2 = index_x
+                tempx3 = middle_x
+                tempx4 = ring_x
+                tempx5 = pinky_x
+                globTF = 1
+            if (index_x <= thumbx + 5 or index_x >= thumbx - 5) and (middle_x <= thumbx + 5 or middle_x >= thumbx - 5) and (ring_x <= thumbx + 5 or ring_x >= thumbx - 5) and (pinky_x <= thumbx + 5 or pinky_x >= thumbx - 5):
+                if (thumbx > tempx1 + 50):
+                    #cv2.putText(img, "RWD", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2,(0,0,255), 2)
+                    pyautogui.press('left')
+                    
+                    globTF = 0
+                    tempy1 = 0
+                    tempy2 = 0
+                    tempy3 = 0
+                    tempy4 = 0
+                    tempy5 = 0
+                    tempx1 = 0
+                    tempx2 = 0
+                    tempx3 = 0
+                    tempx4 = 0
+                    tempx5 = 0
+                if (thumbx < tempx1 - 50):
+                    #cv2.putText(img, "RWD", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2,(0,0,255), 2)
+                    #pyautogui.press('left')
+                    pyautogui.press('right')
+                    globTF = 0
+                    tempy1 = 0
+                    tempy2 = 0
+                    tempy3 = 0
+                    tempy4 = 0
+                    tempy5 = 0
+                    tempx1 = 0
+                    tempx2 = 0
+                    tempx3 = 0
+                    tempx4 = 0
+                    tempx5 = 0
+
+        
+        
 
         #thumby is thumb, index_y is index, middle_y is middle, ring_y is ring, pinky_y is pinky
         # if (thumby > index_y) and (thumby>middle_y) and (thumby>ring_y) and (thumby>pinky_y):
