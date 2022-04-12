@@ -315,12 +315,40 @@ while True:
                     tempx4 = 0
                     tempx5 = 0
                     xylock = 0
-        # hand range 300 to 50
-        # vol = np.interp(length,[50,300],[minVol,maxVol])
-        # volBar = np.interp(length,[50,300],[400,150])
-        # volume.SetMasterVolumeLevel(vol, None)
-
-        if lengthfist < 50:
+        
+        
+        
+        lengthfist = math.hypot(index_x - thumbx, index_y - thumby)
+        if(lengthfist < 50):
+            if (globTF == 0):
+                tempy1 = thumby
+                tempy2 = index_y
+                tempy3 = middle_y
+                tempy4 = ring_y
+                tempy5 = pinky_y
+                tempx1 = thumbx
+                tempx2 = index_x
+                tempx3 = middle_x
+                tempx4 = ring_x
+                tempx5 = pinky_x
+                globTF = 1
+        
+            if math.hypot(tempx2 - tempx1, tempy2 - tempy1) < 50:
+                pyautogui.hotkey('volumemute')
+                globTF = 0
+                tempy1 = 0
+                tempy2 = 0
+                tempy3 = 0
+                tempy4 = 0
+                tempy5 = 0
+                tempx1 = 0
+                tempx2 = 0
+                tempx3 = 0
+                tempx4 = 0
+                tempx5 = 0
+                xylock = 0
+                
+                
             cv2.circle(img, (xc, yc), 15, (0, 255, 0), cv2.FILLED)
 
 
