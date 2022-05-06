@@ -1,0 +1,10 @@
+To run this program, you will need the required packages. 
+These packages include:
+- PyAutoGUI
+- Mediapipe
+- OpenCV
+
+You will need these 3 packages to properly run our program, and if needed install further software packages that are asked by the program.
+When running the program, make sure you have these dependencies installed and a camera available. 
+Once confirmed that you have the above mentioned materials ready, the program should run properly.
+To start our program, run TutorialWindow.py to view our designed gestures, then the program will take short moment to start. 
