@@ -1,5 +1,10 @@
 from tkinter import *
 
+# https://google.github.io/mediapipe/solutions/hands.html - Used this link to understand the hand model usage of Mediapipe
+# https://www.youtube.com/watch?v=NZde8Xt78Iw - Used this video to understand real time hand tracking
+# https://www.youtube.com/watch?v=9iEPzbG-xLE - Used this video to understand volume control with gestures
+# https://pyautogui.readthedocs.io/en/latest/ - Used this link to understand PyAutoGUI and its interaction with hotkeys
+
 root = Tk()
 
 root.resizable(False, False)
